@@ -25,6 +25,7 @@
             cssprefixes:['test/**/cssprefixes*.js'],
             doctype:['test/**/doctype*.js'],
             favicon:['test/**/ie10favicon*.js'],
+            prefetch:['test/**/prefetch*.js'],
             pluginfree:['test/**/pluginfree*.js'],
             rwd:['test/**/responsive*.js'],
             touch:['test/**/touch*.js'],
