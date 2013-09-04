@@ -26,6 +26,8 @@
             doctype:['test/**/doctype*.js'],
             favicon:['test/**/ie10favicon*.js'],
             prefetch:['test/**/prefetch*.js'],
+            pinned:['test/**/pinned*.js'],
+            pinnedxml:['test/**/pinnedxml*.js'],
             pluginfree:['test/**/pluginfree*.js'],
             rwd:['test/**/responsive*.js'],
             touch:['test/**/touch*.js'],
