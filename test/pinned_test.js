@@ -17,12 +17,12 @@
 
 "use strict";
 
-var prefetch = require('../lib/checks/check-prefetch.js'),
+var pinned = require('../lib/checks/check-pinned.js'),
     url = require('url'),
     request = require('request'),
     cheerio = require('cheerio'),
     testServer = require('../static/test-server.js'),
-    testUrl = 'http://localhost:' + testServer.port + '/prefetch-';
+    testUrl = 'http://localhost:' + testServer.port + '/pinned-';
 
 
 function checkPage(page, expected) {
@@ -44,7 +44,7 @@ function checkPage(page, expected) {
                 $: cheerio.load(content)
             };
 
-            prefetch.check(website).then(function (result) {
+            pinned.check(website).then(function (result) {
                 test.equal(result.passed, expected.passed, uri + " passed: " + result.passed + " !== " + expected.passed);
                 if (expected.data) {
                     for(var key in expected.data){
@@ -57,33 +57,53 @@ function checkPage(page, expected) {
     };
 }
 
-module.exports['Prefetch'] = {
-    'No Preload': checkPage('1.html', {
+module.exports['Pinned'] = {
+    'No Pinned': checkPage('1.html', {
         passed: false,
         data: {
-            preload1: false,
-            preload2: false,
-            preload3: false
+            tile1: false,
+            tile2: false,
+            tile3: false,
+            tile4: false
         }}),
-    'Preload HTML: prefetch': checkPage('2.html', {
+    'Pinned HTML full tiled': checkPage('2.html', {
         passed: true,
         data: {
-            preload1: true,
-            preload2: false,
-            preload3: false
+            tile1: true,
+            tile2: true,
+            tile3: true,
+            tile4: true
         }}),
-    'Preload HTML: dns-prefetch': checkPage('3.html', {
+    'Pinned HTML Tile1': checkPage('3.html', {
         passed: true,
         data: {
-            preload1: false,
-            preload2: true,
-            preload3: false
+            tile1: true,
+            tile2: false,
+            tile3: false,
+            tile4: false
         }}),
-    'Preload HTML: prerender': checkPage('4.html', {
+    'Pinned HTML Tile2': checkPage('4.html', {
         passed: true,
         data: {
-            preload1: false,
-            preload2: false,
-            preload3: true
+            tile1: false,
+            tile2: true,
+            tile3: false,
+            tile4: false
+        }}),
+    'Pinned HTML Tile3': checkPage('5.html', {
+        passed: true,
+        data: {
+            tile1: false,
+            tile2: false,
+            tile3: true,
+            tile4: false
+        }}),
+    'Pinned HTML Tile4': checkPage('6.html', {
+        passed: true,
+        data: {
+            tile1: false,
+            tile2: false,
+            tile3: false,
+            tile4: true
         }})
 };
