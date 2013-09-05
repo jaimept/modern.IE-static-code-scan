@@ -61,29 +61,29 @@ module.exports['Prefetch'] = {
     'No Preload': checkPage('1.html', {
         passed: false,
         data: {
-            preload1: false,
-            preload2: false,
-            preload3: false
+            prefetch: false,
+            dnsprefetch: false,
+            prerender: false
         }}),
     'Preload HTML: prefetch': checkPage('2.html', {
         passed: true,
         data: {
-            preload1: true,
-            preload2: false,
-            preload3: false
+            prefetch: true,
+            dnsprefetch: false,
+            prerender: false
         }}),
     'Preload HTML: dns-prefetch': checkPage('3.html', {
         passed: true,
         data: {
-            preload1: false,
-            preload2: true,
-            preload3: false
+            prefetch: false,
+            dnsprefetch: true,
+            prerender: false
         }}),
     'Preload HTML: prerender': checkPage('4.html', {
         passed: true,
         data: {
-            preload1: false,
-            preload2: false,
-            preload3: true
+            prefetch: false,
+            dnsprefetch: false,
+            prerender: true
         }})
 };

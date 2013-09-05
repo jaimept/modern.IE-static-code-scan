@@ -17,12 +17,12 @@
 
 "use strict";
 
-var pinned = require('../lib/checks/check-pinned.js'),
+var pinnedxml = require('../lib/checks/check-pinnedxml.js'),
     url = require('url'),
     request = require('request'),
     cheerio = require('cheerio'),
     testServer = require('../static/test-server.js'),
-    testUrl = 'http://localhost:' + testServer.port + '/pinned-';
+    testUrl = 'http://localhost:' + testServer.port + '/pinnedxml-';
 
 
 function checkPage(page, expected) {
@@ -44,7 +44,7 @@ function checkPage(page, expected) {
                 $: cheerio.load(content)
             };
 
-            pinned.check(website).then(function (result) {
+            pinnedxml.check(website).then(function (result) {
                 test.equal(result.passed, expected.passed, uri + " passed: " + result.passed + " !== " + expected.passed);
                 if (expected.data) {
                     for(var key in expected.data){
@@ -57,53 +57,21 @@ function checkPage(page, expected) {
     };
 }
 
-module.exports['Pinned'] = {
+module.exports['Pinnedxml'] = {
     'No Pinned': checkPage('1.html', {
         passed: false,
         data: {
-            square70: false,
+            squere70: false,
             square150: false,
             wide310: false,
             square310: false
         }}),
-    'Pinned HTML full tiled': checkPage('2.html', {
+    'Pinned XML IEConfig.xml': checkPage('2.html', {
         passed: true,
         data: {
             square70: true,
             square150: true,
             wide310: true,
-            square310: true
-        }}),
-    'Pinned HTML Tile1': checkPage('3.html', {
-        passed: true,
-        data: {
-            square70: true,
-            square150: false,
-            wide310: false,
-            square310: false
-        }}),
-    'Pinned HTML Tile2': checkPage('4.html', {
-        passed: true,
-        data: {
-            square70: false,
-            square150: true,
-            wide310: false,
-            square310: false
-        }}),
-    'Pinned HTML Tile3': checkPage('5.html', {
-        passed: true,
-        data: {
-            square70: false,
-            square150: false,
-            wide310: true,
-            square310: false
-        }}),
-    'Pinned HTML Tile4': checkPage('6.html', {
-        passed: true,
-        data: {
-            square70: false,
-            square150: false,
-            wide310: false,
             square310: true
         }})
 };

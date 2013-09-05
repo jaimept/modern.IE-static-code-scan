@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="msapplication-config" content="IEconfig.xml" />
+  <title></title>
+    <script>
+        function contentxml() {
+            var url = window.location.href;
+            var path = url.substring(0, url.lastIndexOf('/') + 1);
+            var m = $('meta[name="msapplication-config"]');
+            var namexml = m.attr("content");
+            url = path.concat(namexml);
+            alert(url);
+        }
+    </script>
+</head>
+<body>
+	<h1>Pinned XML IEConfig.xml</h1>
+	<p>Expected result: <b>Passes</b></p>
+    <button onclick="contentxml();" />
+</body>
+</html>
