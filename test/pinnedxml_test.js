@@ -61,7 +61,7 @@ module.exports['Pinnedxml'] = {
     'No Pinned': checkPage('1.html', {
         passed: false,
         data: {
-            squere70: false,
+            square70: false,
             square150: false,
             wide310: false,
             square310: false
