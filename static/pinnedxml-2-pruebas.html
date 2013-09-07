@@ -8,9 +8,16 @@
         function contentxml() {
             var url = window.location.href;
             var path = url.substring(0, url.lastIndexOf('/') + 1);
-            var m = $('meta[name="msapplication-config"]');
-            var namexml = m.attr("content");
-            url = path.concat(namexml);
+            alert(path);
+            var description;
+            var metas = document.getElementsByTagName('meta');
+            for (var x = 0, y = metas.length; x < y; x++) {
+                if (metas[x].name.toLowerCase() == "msapplication-config") {
+                    description = metas[x];
+                }
+            }
+            alert(description.content);
+            url = path.concat(description.content);
             alert(url);
         }
     </script>

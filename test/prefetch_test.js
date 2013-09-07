@@ -1,5 +1,5 @@
 /**
- * Description: Test detection of IE10 favicon meta tags.
+ * Description: Test detection of IE11 preload link tags.
  *
  * Copyright (c) Microsoft Corporation; All rights reserved.
  *
