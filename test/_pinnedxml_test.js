@@ -65,7 +65,7 @@ module.exports['Pinnedxml'] = {
             square150: false,
             wide310: false,
             square310: false
-        }}), 
+        }}),
     'Pinned XML IEConfig.xml': checkPage('2.html', {
         passed: true,
         data: {

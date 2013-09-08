@@ -28,7 +28,6 @@
             prefetch:['test/**/prefetch*.js'],
             pinned:['test/**/pinned*.js'],
             pinnedxml:['test/**/pinnedxml*.js'],
-            pinnedxml2:['test/**/pinnedxml2*.js'],
             pluginfree:['test/**/pluginfree*.js'],
             rwd:['test/**/responsive*.js'],
             touch:['test/**/touch*.js'],
