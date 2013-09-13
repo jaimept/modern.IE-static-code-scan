@@ -25,6 +25,7 @@
             cssprefixes:['test/**/cssprefixes*.js'],
             doctype:['test/**/doctype*.js'],
             favicon:['test/**/ie10favicon*.js'],
+            minifyjs:['test/**/minifyjs*.js'],
             prefetch:['test/**/prefetch*.js'],
             pinned:['test/**/pinned*.js'],
             pinnedxml:['test/**/pinnedxml*.js'],
