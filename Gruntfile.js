@@ -31,6 +31,7 @@
             pinnedxml:['test/**/pinnedxml*.js'],
             pluginfree:['test/**/pluginfree*.js'],
             rwd:['test/**/responsive*.js'],
+            spritedcss:['test/**/spritedcss*.js'],
             touch:['test/**/touch*.js'],
             auth:['test/**/auth*.js']
         },

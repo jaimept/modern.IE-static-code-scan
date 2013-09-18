@@ -1,5 +1,5 @@
 /**
- * Description: Test detection of JavaScript Minify.
+ * Description: Test detection of  IE11 Live Tiles meta tags.
  *
  * Copyright (c) Microsoft Corporation; All rights reserved.
  *
@@ -17,12 +17,12 @@
 
 "use strict";
 
-var minifyjs = require('../lib/checks/check-minifyjs.js'),
+var spritedcss = require('../lib/checks/check-spritedcss.js'),
     url = require('url'),
     request = require('request'),
     cheerio = require('cheerio'),
     testServer = require('../static/test-server.js'),
-    testUrl = 'http://localhost:' + testServer.port + '/minifyjs-';
+    testUrl = 'http://localhost:' + testServer.port + '/spritedcss-';
 
 
 function checkPage(page, expected) {
@@ -33,7 +33,7 @@ function checkPage(page, expected) {
         if (expected.data) {
             tests += Object.keys(expected.data).length;
         }
-
+        
 
         test.expect(tests);
 
@@ -44,10 +44,10 @@ function checkPage(page, expected) {
                 $: cheerio.load(content)
             };
 
-            minifyjs.check(website).then(function (result) {
+            spritedcss.check(website).then(function (result) {
                 test.equal(result.passed, expected.passed, uri + " passed: " + result.passed + " !== " + expected.passed);
                 if (expected.data) {
-                    for (var key in expected.data) {
+                    for(var key in expected.data){
                         test.equal(result.data[key], expected.data[key], uri + " key: " + result.data[key] + " !== " + expected.data[key]);
                     }
                 }
@@ -57,35 +57,13 @@ function checkPage(page, expected) {
     };
 }
 
-module.exports['Minifyjs'] = {
-    'JQuery no minify': checkPage('1.html', {
+module.exports['Spritedcss'] = {
+    'CSS without Sprites': checkPage('1.html', {
         passed: false,
-    }),
-    'jQuery minify': checkPage('2.html', {
+        data: {
+        }}),
+    'CSS with Sprites': checkPage('2.html', {
         passed: true,
-    }),
-    /*    'jQuery http ref no minify': checkPage('3.html', {
-            passed: false,
-        }),*/
-    /*    'jQuery http ref minify': checkPage('4.html', {
-        passed: true,
-    })*/
-    'JQuery UI no minify': checkPage('5.html', {
-        passed: false,
-    }),
-    'JQuery minify': checkPage('6.html', {
-        passed: true,
-    }),
-    'modernizr no minify': checkPage('7.html', {
-        passed: false,
-    }),
-    'modernizr minify': checkPage('8.html', {
-        passed: true,
-    }),
-    'JQuery no minify & modernizr minify': checkPage('9.html', {
-        passed: false,
-    }),
-    'modernizr minify & JQuery no minify': checkPage('10.html', {
-        passed: false,
-    }),
+        data: {
+        }})
 };
