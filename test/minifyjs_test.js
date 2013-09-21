@@ -64,12 +64,12 @@ module.exports['Minifyjs'] = {
     'jQuery minify': checkPage('2.html', {
         passed: true,
     }),
-    /*    'jQuery http ref no minify': checkPage('3.html', {
+    'mootools no minify': checkPage('3.html', {
             passed: false,
-        }),*/
-    /*    'jQuery http ref minify': checkPage('4.html', {
+     }),
+    'mootools minify': checkPage('4.html', {
         passed: true,
-    })*/
+    }),
     'JQuery UI no minify': checkPage('5.html', {
         passed: false,
     }),
